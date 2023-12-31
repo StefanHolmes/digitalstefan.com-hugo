@@ -1,0 +1,47 @@
+{{ partial "head/meta-tags.html" . }}
+
+{{ if .Params.canonicalUrl }}
+<link rel="canonical" href="{{ .Params.canonicalUrl }}">
+{{ else }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ end }}
+
+<!-- Google Consent Mode -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_storage: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+</script>
+<!-- End Google Consent Mode -->
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://ssgtm.digitalstefan.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KHKFD4R');</script>
+<!-- End Google Tag Manager -->
+  
+<!-- Cookiebot -->
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="450934ff-4a8a-4e9a-b835-6b15a6f9eb40" type="text/javascript" async></script>
+<!-- End CookieBot -->
+
+{{ partialCached "head/theme-styles.html" . }}
+
+{{ partialCached "head/color-scheme.html" . }}
+
+{{ partialCached "head/custom-styles.html" . }}
+
+{{ partialCached "head/custom-icons.html" . }}
+
+{{ partial "head/alternative-output-formats.html" . }}
+
+{{ if .IsHome }}{{ partial "head/hugo-generator.html" . }}{{ end }}
+
+{{ partial "head/extensions.html" . }}
