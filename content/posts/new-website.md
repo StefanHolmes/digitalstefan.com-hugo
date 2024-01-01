@@ -1,5 +1,5 @@
 +++ 
-draft = true
+draft = false
 date = 2024-01-01T16:20:26Z
 title = "Website Redesign"
 description = ""
