@@ -10,7 +10,7 @@ categories = []
 externalLink = ""
 series = []
 +++
-{{< notice note >}}This page was recreated from the old version of this site, where it was just plain HTML, CSS and JS. I haven't fixed the formatting yet, but the calculator works just as it did.{{< /notice >}}
+{{< notice note >}}This page was recreated from the [old version](https://web.archive.org/web/20240101201026/https://www.digitalstefan.com/bread-calculator) of this site, where it was just plain HTML, CSS and JS. I haven't fixed the formatting yet, but the calculator works just as it did.{{< /notice >}}
 {{< rawhtml >}}
 <script>
 function calcBread() {
@@ -32,21 +32,25 @@ function calcBread() {
 }
 </script>
 
-<form>
+<form style="display: block;">
     <fieldset>
         <legend>Adjust ratios</legend>
         <label>Flour
             <input type="number" id="flour_ratio" value="100" oninput="calcBread()">
         </label>
+        <br>
         <label>Water
             <input type="number" id="water_ratio" value="65" oninput="calcBread()">
         </label>
+        <br>
         <label>Yeast
             <input type="number" id="yeast_ratio" value="1" oninput="calcBread()">
         </label>
+        <br>
         <label>Salt
             <input type="number" id="salt_ratio" value="2" oninput="calcBread()">
         </label>
+        <br>
         <label>Oil
             <input type="number" id="oil_ratio" value="1.5" oninput="calcBread()">
         </label>
@@ -59,7 +63,12 @@ function calcBread() {
     </fieldset>
 </form>
 
-<table class="bread-table">
+<table class="bread-table" style="border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);">
     <caption>Result:-</caption>
     <tr>
         <td>Water</td>
@@ -80,3 +89,23 @@ function calcBread() {
 </table>
 <script>calcBread()</script>
 {{< /rawhtml >}}
+
+{{< notice info >}}Here's the JavaScript function that does the calculation{{< /notice >}}
+
+```js
+function calcBread() {
+    const flourRatio = document.querySelector("#flour_ratio").value
+    const waterRatio = document.querySelector("#water_ratio").value
+    const yeastRatio = document.querySelector("#yeast_ratio").value
+    const saltRatio = document.querySelector("#salt_ratio").value
+    const oilRatio = document.querySelector("#oil_ratio").value
+    const flourWeight = document.querySelector("#flour_weight").value
+
+    const flourConst = flourWeight / flourRatio
+
+    document.querySelector("#water_calc").textContent = waterRatio * flourConst
+    document.querySelector("#yeast_calc").textContent = yeastRatio * flourConst
+    document.querySelector("#salt_calc").textContent = saltRatio * flourConst
+    document.querySelector("#oil_calc").textContent = oilRatio * flourConst
+}
+```
